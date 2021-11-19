@@ -18,18 +18,6 @@ export class Covid19Service {
       .pipe(map((response) => response.data));
   }
 
-  allCountriesCovidData(): Observable<any> {
-    return this.httpService
-      .get(`${process.env.API_BASE_COVID}/countries`)
-      .pipe(map((response) => response.data));
-  }
-
-  countryCovidData(country: string = 'usa'): Observable<any> {
-    return this.httpService
-      .get(`${process.env.API_BASE_COVID}/countries/${country}`)
-      .pipe(map((response) => response.data));
-  }
-
   graphicsData() {
     return this.allCovidDataPerDay().pipe(
       map((history) => {
