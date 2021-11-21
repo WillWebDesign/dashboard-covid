@@ -1,0 +1,9 @@
+<div class="container mx-auto pt-5">
+  <div class="text-3xl font-sans font-bold my-3 block text-center">Global Data</div>
+  <div class="flex flex-wrap justify-center">
+    <app-graphic *ngFor="let chart of charts"
+                 class="my-4 mx-3"
+                 [data]="chart"></app-graphic>
+  </div>
+
+</div>

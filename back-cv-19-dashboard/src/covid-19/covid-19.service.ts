@@ -21,7 +21,6 @@ export class Covid19Service {
   graphicsData() {
     return this.allCovidDataPerDay().pipe(
       map((history) => {
-
         const response = [];
 
         for (const key in history) {
@@ -29,20 +28,23 @@ export class Covid19Service {
             const element = history[key];
             let labels = [];
             let data = [];
-            Object.keys(element).forEach(key => {
+            Object.keys(element).forEach((key) => {
               labels.push(key);
               data.push(element[key]);
             });
             const obj = {
               labels,
-              datasets: [{
-                label: key,
-                data,
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-              }]
-            }
+              datasets: [
+                {
+                  label: key,
+                  data,
+                  fill: false,
+                  backgroundColor: 'rgb(255, 99, 132)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  tension: 0.1,
+                },
+              ],
+            };
             response.push(obj);
           }
         }
