@@ -1,5 +1,5 @@
 import { ProxyCovidDataService } from '../../services/proxy-covid-data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   charts: any[] = [];
-  dataSource: any[] = [];
-  displayedColumns: string[] = [
-    'table-cases',
-    'table-todayCases',
-    'table-recovered',
-    'table-todayRecovered',
-    'table-deaths',
-    'table-todayDeaths',
-    'table-tests',
-    'table-testsPerOneMillion',
-    'table-date',
-    'table-active',
-    'table-critical',
-    'table-country',
+  countriesDataSource: any;
+  countriesDisplayedColumns: string[] = [
+    'cases',
+    'todayCases',
+    'recovered',
+    'todayRecovered',
+    'deaths',
+    'todayDeaths',
+    'tests',
+    'testsPerOneMillion',
+    'date',
+    'active',
+    'critical',
+    'country',
   ];
 
   constructor(private prxoyCovidDataService: ProxyCovidDataService) {}
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.charts = response;
     });
     this.prxoyCovidDataService.allCountriesData().subscribe((response: any) => {
-      this.dataSource = response;
+      this.countriesDataSource = response;
     });
   }
 }
