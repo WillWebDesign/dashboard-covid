@@ -23,15 +23,25 @@ export class HomeComponent implements OnInit {
     'critical',
     'country',
   ];
+  dataPerDayDataSource: any;
+  dataPerDayDisplayedColumns: string[] = [
+    'date',
+    'cases',
+    'deaths',
+    'recovered',
+  ];
 
-  constructor(private prxoyCovidDataService: ProxyCovidDataService) {}
+  constructor(private proxyCovidDataService: ProxyCovidDataService) {}
 
   ngOnInit(): void {
-    this.prxoyCovidDataService.graphicsData().subscribe((response: any) => {
+    this.proxyCovidDataService.graphicsData().subscribe((response: any) => {
       this.charts = response;
     });
-    this.prxoyCovidDataService.allCountriesData().subscribe((response: any) => {
+    this.proxyCovidDataService.allCountriesData().subscribe((response: any) => {
       this.countriesDataSource = response;
+    });
+    this.proxyCovidDataService.allDataPerDay().subscribe((response: any) => {
+      this.dataPerDayDataSource = response;
     });
   }
 }

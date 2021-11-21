@@ -16,4 +16,8 @@ export class ProxyCovidDataService {
   allCountriesData() {
     return this.http.get(`${this.url}/covid-19/countries`);
   }
+
+  allDataPerDay() {
+    return this.http.get(`${this.url}/covid-19/per-day`);
+  }
 }

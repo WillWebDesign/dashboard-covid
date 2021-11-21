@@ -13,7 +13,12 @@
                    [displayedColumns]="countriesDisplayedColumns"
                    [paginatorOptions]="[20,50,100]"></app-table>
       </mat-tab>
-      <mat-tab label="Global data per day"> Content 2 </mat-tab>
+      <mat-tab label="Global data per day">
+        <app-table *ngIf="dataPerDayDataSource"
+                   [dataSource]="dataPerDayDataSource"
+                   [displayedColumns]="dataPerDayDisplayedColumns"
+                   [paginatorOptions]="[20,50,100]"></app-table>
+      </mat-tab>
     </mat-tab-group>
   </mat-card>
 </div>
