@@ -9,19 +9,21 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  tableDataSrc: any;
+  dataTable: any;
   @Input() dataSource: any[] = [];
   @Input() displayedColumns: any[] = [];
+  @Input() paginatorOptions: any[] = [];
 
   @ViewChild(MatSort, { static: true }) sort: MatSort | undefined;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
-
+  @ViewChild(MatPaginator, { static: true }) paginator:
+    | MatPaginator
+    | undefined;
 
   constructor() {}
 
-  ngOnInit(): void{
-    this.tableDataSrc = new MatTableDataSource(this.dataSource);
-    this.tableDataSrc.sort = this.sort;
-    this.tableDataSrc.paginator = this.paginator;
+  ngOnInit(): void {
+    this.dataTable = new MatTableDataSource(this.dataSource);
+    this.dataTable.sort = this.sort;
+    this.dataTable.paginator = this.paginator;
   }
 }

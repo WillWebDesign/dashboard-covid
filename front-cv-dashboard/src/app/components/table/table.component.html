@@ -1,5 +1,5 @@
 <table mat-table
-       [dataSource]="tableDataSrc"
+       [dataSource]="dataTable"
        matSort
        class="mat-elevation-z8 table">
   <ng-container *ngFor="let col of displayedColumns">
@@ -20,5 +20,5 @@
       *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+<mat-paginator [pageSizeOptions]="paginatorOptions"
                showFirstLastButtons></mat-paginator>
